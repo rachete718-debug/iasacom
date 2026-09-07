@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as CollaborationRouteImport } from './routes/collaboration'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProcessusRouteImport } from './routes/processus'
@@ -36,6 +37,11 @@ const AProposRoute = AProposRouteImport.update({
 const CollaborationRoute = CollaborationRouteImport.update({
   id: '/collaboration',
   path: '/collaboration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/contact'
     | '/faq'
     | '/portfolio'
     | '/processus'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/contact'
     | '/faq'
     | '/portfolio'
     | '/processus'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/contact'
     | '/faq'
     | '/portfolio'
     | '/processus'
@@ -187,6 +199,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   CollaborationRoute: typeof CollaborationRoute
+  ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   PortfolioRoute: typeof PortfolioRoute
   ProcessusRoute: typeof ProcessusRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/collaboration'
       fullPath: '/collaboration'
       preLoaderRoute: typeof CollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -299,6 +319,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   CollaborationRoute: CollaborationRoute,
+  ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   PortfolioRoute: PortfolioRoute,
   ProcessusRoute: ProcessusRoute,
