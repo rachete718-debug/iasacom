@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesMontageVideoRouteImport } from './routes/services.montage-video'
+import { Route as ServicesPublicitesRouteImport } from './routes/services.publicites'
 import { Route as ServicesSitesWebRouteImport } from './routes/services.sites-web'
 import { Route as ServicesUgcIaRouteImport } from './routes/services.ugc-ia'
 
@@ -30,6 +31,11 @@ const ServicesMontageVideoRoute = ServicesMontageVideoRouteImport.update({
   path: '/services/montage-video',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesPublicitesRoute = ServicesPublicitesRouteImport.update({
+  id: '/services/publicites',
+  path: '/services/publicites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSitesWebRoute = ServicesSitesWebRouteImport.update({
   id: '/services/sites-web',
   path: '/services/sites-web',
@@ -44,6 +50,7 @@ const ServicesUgcIaRoute = ServicesUgcIaRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services/': typeof ServicesIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services': typeof ServicesIndexRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services/': typeof ServicesIndexRoute
@@ -68,6 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/services/montage-video'
+    | '/services/publicites'
     | '/services/sites-web'
     | '/services/ugc-ia'
     | '/services/'
@@ -75,6 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/services/montage-video'
+    | '/services/publicites'
     | '/services/sites-web'
     | '/services/ugc-ia'
     | '/services'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/services/montage-video'
+    | '/services/publicites'
     | '/services/sites-web'
     | '/services/ugc-ia'
     | '/services/'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ServicesMontageVideoRoute: typeof ServicesMontageVideoRoute
+  ServicesPublicitesRoute: typeof ServicesPublicitesRoute
   ServicesSitesWebRoute: typeof ServicesSitesWebRoute
   ServicesUgcIaRoute: typeof ServicesUgcIaRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -118,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesMontageVideoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/publicites': {
+      id: '/services/publicites'
+      path: '/services/publicites'
+      fullPath: '/services/publicites'
+      preLoaderRoute: typeof ServicesPublicitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/sites-web': {
       id: '/services/sites-web'
       path: '/services/sites-web'
@@ -138,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ServicesMontageVideoRoute: ServicesMontageVideoRoute,
+  ServicesPublicitesRoute: ServicesPublicitesRoute,
   ServicesSitesWebRoute: ServicesSitesWebRoute,
   ServicesUgcIaRoute: ServicesUgcIaRoute,
   ServicesIndexRoute: ServicesIndexRoute,
