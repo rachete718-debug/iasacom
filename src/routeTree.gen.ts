@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as VisionRouteImport } from './routes/vision'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesMontageVideoRouteImport } from './routes/services.montage-video'
 import { Route as ServicesPublicitesRouteImport } from './routes/services.publicites'
@@ -31,6 +32,11 @@ const AProposRoute = AProposRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisionRoute = VisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/portfolio': typeof PortfolioRoute
+  '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/portfolio': typeof PortfolioRoute
+  '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/portfolio': typeof PortfolioRoute
+  '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/publicites': typeof ServicesPublicitesRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/portfolio'
+    | '/vision'
     | '/services/montage-video'
     | '/services/publicites'
     | '/services/sites-web'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/portfolio'
+    | '/vision'
     | '/services/montage-video'
     | '/services/publicites'
     | '/services/sites-web'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/portfolio'
+    | '/vision'
     | '/services/montage-video'
     | '/services/publicites'
     | '/services/sites-web'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   PortfolioRoute: typeof PortfolioRoute
+  VisionRoute: typeof VisionRoute
   ServicesMontageVideoRoute: typeof ServicesMontageVideoRoute
   ServicesPublicitesRoute: typeof ServicesPublicitesRoute
   ServicesSitesWebRoute: typeof ServicesSitesWebRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vision': {
+      id: '/vision'
+      path: '/vision'
+      fullPath: '/vision'
+      preLoaderRoute: typeof VisionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   PortfolioRoute: PortfolioRoute,
+  VisionRoute: VisionRoute,
   ServicesMontageVideoRoute: ServicesMontageVideoRoute,
   ServicesPublicitesRoute: ServicesPublicitesRoute,
   ServicesSitesWebRoute: ServicesSitesWebRoute,
