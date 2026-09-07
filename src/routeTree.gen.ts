@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesMontageVideoRouteImport } from './routes/services.montage-video'
 import { Route as ServicesSitesWebRouteImport } from './routes/services.sites-web'
 import { Route as ServicesUgcIaRouteImport } from './routes/services.ugc-ia'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMontageVideoRoute = ServicesMontageVideoRouteImport.update({
+  id: '/services/montage-video',
+  path: '/services/montage-video',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesSitesWebRoute = ServicesSitesWebRouteImport.update({
@@ -37,12 +43,14 @@ const ServicesUgcIaRoute = ServicesUgcIaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services': typeof ServicesIndexRoute
@@ -50,21 +58,38 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
   '/services/sites-web': typeof ServicesSitesWebRoute
   '/services/ugc-ia': typeof ServicesUgcIaRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services/sites-web' | '/services/ugc-ia' | '/services/'
+  fullPaths:
+    | '/'
+    | '/services/montage-video'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services/sites-web' | '/services/ugc-ia' | '/services'
+  to:
+    | '/'
+    | '/services/montage-video'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services'
   id:
-    '__root__' | '/' | '/services/sites-web' | '/services/ugc-ia' | '/services/'
+    | '__root__'
+    | '/'
+    | '/services/montage-video'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServicesMontageVideoRoute: typeof ServicesMontageVideoRoute
   ServicesSitesWebRoute: typeof ServicesSitesWebRoute
   ServicesUgcIaRoute: typeof ServicesUgcIaRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -86,6 +111,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/montage-video': {
+      id: '/services/montage-video'
+      path: '/services/montage-video'
+      fullPath: '/services/montage-video'
+      preLoaderRoute: typeof ServicesMontageVideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/sites-web': {
       id: '/services/sites-web'
       path: '/services/sites-web'
@@ -105,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServicesMontageVideoRoute: ServicesMontageVideoRoute,
   ServicesSitesWebRoute: ServicesSitesWebRoute,
   ServicesUgcIaRoute: ServicesUgcIaRoute,
   ServicesIndexRoute: ServicesIndexRoute,
