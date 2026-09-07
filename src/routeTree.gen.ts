@@ -10,33 +10,64 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSitesWebRouteImport } from './routes/services.sites-web'
+import { Route as ServicesUgcIaRouteImport } from './routes/services.ugc-ia'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSitesWebRoute = ServicesSitesWebRouteImport.update({
+  id: '/services/sites-web',
+  path: '/services/sites-web',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesUgcIaRoute = ServicesUgcIaRouteImport.update({
+  id: '/services/ugc-ia',
+  path: '/services/ugc-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/services/sites-web' | '/services/ugc-ia' | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/services/sites-web' | '/services/ugc-ia' | '/services'
+  id:
+    '__root__' | '/' | '/services/sites-web' | '/services/ugc-ia' | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServicesSitesWebRoute: typeof ServicesSitesWebRoute
+  ServicesUgcIaRoute: typeof ServicesUgcIaRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +79,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/sites-web': {
+      id: '/services/sites-web'
+      path: '/services/sites-web'
+      fullPath: '/services/sites-web'
+      preLoaderRoute: typeof ServicesSitesWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/ugc-ia': {
+      id: '/services/ugc-ia'
+      path: '/services/ugc-ia'
+      fullPath: '/services/ugc-ia'
+      preLoaderRoute: typeof ServicesUgcIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServicesSitesWebRoute: ServicesSitesWebRoute,
+  ServicesUgcIaRoute: ServicesUgcIaRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
