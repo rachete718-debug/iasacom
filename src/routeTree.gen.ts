@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as CollaborationRouteImport } from './routes/collaboration'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProcessusRouteImport } from './routes/processus'
 import { Route as TarifsRouteImport } from './routes/tarifs'
@@ -35,6 +36,11 @@ const AProposRoute = AProposRouteImport.update({
 const CollaborationRoute = CollaborationRouteImport.update({
   id: '/collaboration',
   path: '/collaboration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
+  '/faq': typeof FaqRoute
   '/portfolio': typeof PortfolioRoute
   '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/faq'
     | '/portfolio'
     | '/processus'
     | '/tarifs'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/faq'
     | '/portfolio'
     | '/processus'
     | '/tarifs'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/collaboration'
+    | '/faq'
     | '/portfolio'
     | '/processus'
     | '/tarifs'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   CollaborationRoute: typeof CollaborationRoute
+  FaqRoute: typeof FaqRoute
   PortfolioRoute: typeof PortfolioRoute
   ProcessusRoute: typeof ProcessusRoute
   TarifsRoute: typeof TarifsRoute
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/collaboration'
       fullPath: '/collaboration'
       preLoaderRoute: typeof CollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   CollaborationRoute: CollaborationRoute,
+  FaqRoute: FaqRoute,
   PortfolioRoute: PortfolioRoute,
   ProcessusRoute: ProcessusRoute,
   TarifsRoute: TarifsRoute,
