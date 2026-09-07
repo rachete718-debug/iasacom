@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as CollaborationRouteImport } from './routes/collaboration'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as ProcessusRouteImport } from './routes/processus'
+import { Route as TarifsRouteImport } from './routes/tarifs'
+import { Route as VisionRouteImport } from './routes/vision'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesMontageVideoRouteImport } from './routes/services.montage-video'
+import { Route as ServicesPublicitesRouteImport } from './routes/services.publicites'
+import { Route as ServicesSitesWebRouteImport } from './routes/services.sites-web'
+import { Route as ServicesUgcIaRouteImport } from './routes/services.ugc-ia'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborationRoute = CollaborationRouteImport.update({
+  id: '/collaboration',
+  path: '/collaboration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessusRoute = ProcessusRouteImport.update({
+  id: '/processus',
+  path: '/processus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TarifsRoute = TarifsRouteImport.update({
+  id: '/tarifs',
+  path: '/tarifs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisionRoute = VisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMontageVideoRoute = ServicesMontageVideoRouteImport.update({
+  id: '/services/montage-video',
+  path: '/services/montage-video',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPublicitesRoute = ServicesPublicitesRouteImport.update({
+  id: '/services/publicites',
+  path: '/services/publicites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSitesWebRoute = ServicesSitesWebRouteImport.update({
+  id: '/services/sites-web',
+  path: '/services/sites-web',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesUgcIaRoute = ServicesUgcIaRouteImport.update({
+  id: '/services/ugc-ia',
+  path: '/services/ugc-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
+  '/tarifs': typeof TarifsRoute
+  '/vision': typeof VisionRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
+  '/tarifs': typeof TarifsRoute
+  '/vision': typeof VisionRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/collaboration': typeof CollaborationRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
+  '/tarifs': typeof TarifsRoute
+  '/vision': typeof VisionRoute
+  '/services/montage-video': typeof ServicesMontageVideoRoute
+  '/services/publicites': typeof ServicesPublicitesRoute
+  '/services/sites-web': typeof ServicesSitesWebRoute
+  '/services/ugc-ia': typeof ServicesUgcIaRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/collaboration'
+    | '/contact'
+    | '/faq'
+    | '/portfolio'
+    | '/processus'
+    | '/tarifs'
+    | '/vision'
+    | '/services/montage-video'
+    | '/services/publicites'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/collaboration'
+    | '/contact'
+    | '/faq'
+    | '/portfolio'
+    | '/processus'
+    | '/tarifs'
+    | '/vision'
+    | '/services/montage-video'
+    | '/services/publicites'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/collaboration'
+    | '/contact'
+    | '/faq'
+    | '/portfolio'
+    | '/processus'
+    | '/tarifs'
+    | '/vision'
+    | '/services/montage-video'
+    | '/services/publicites'
+    | '/services/sites-web'
+    | '/services/ugc-ia'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  CollaborationRoute: typeof CollaborationRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  PortfolioRoute: typeof PortfolioRoute
+  ProcessusRoute: typeof ProcessusRoute
+  TarifsRoute: typeof TarifsRoute
+  VisionRoute: typeof VisionRoute
+  ServicesMontageVideoRoute: typeof ServicesMontageVideoRoute
+  ServicesPublicitesRoute: typeof ServicesPublicitesRoute
+  ServicesSitesWebRoute: typeof ServicesSitesWebRoute
+  ServicesUgcIaRoute: typeof ServicesUgcIaRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaboration': {
+      id: '/collaboration'
+      path: '/collaboration'
+      fullPath: '/collaboration'
+      preLoaderRoute: typeof CollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processus': {
+      id: '/processus'
+      path: '/processus'
+      fullPath: '/processus'
+      preLoaderRoute: typeof ProcessusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tarifs': {
+      id: '/tarifs'
+      path: '/tarifs'
+      fullPath: '/tarifs'
+      preLoaderRoute: typeof TarifsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vision': {
+      id: '/vision'
+      path: '/vision'
+      fullPath: '/vision'
+      preLoaderRoute: typeof VisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/montage-video': {
+      id: '/services/montage-video'
+      path: '/services/montage-video'
+      fullPath: '/services/montage-video'
+      preLoaderRoute: typeof ServicesMontageVideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/publicites': {
+      id: '/services/publicites'
+      path: '/services/publicites'
+      fullPath: '/services/publicites'
+      preLoaderRoute: typeof ServicesPublicitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/sites-web': {
+      id: '/services/sites-web'
+      path: '/services/sites-web'
+      fullPath: '/services/sites-web'
+      preLoaderRoute: typeof ServicesSitesWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/ugc-ia': {
+      id: '/services/ugc-ia'
+      path: '/services/ugc-ia'
+      fullPath: '/services/ugc-ia'
+      preLoaderRoute: typeof ServicesUgcIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  CollaborationRoute: CollaborationRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  PortfolioRoute: PortfolioRoute,
+  ProcessusRoute: ProcessusRoute,
+  TarifsRoute: TarifsRoute,
+  VisionRoute: VisionRoute,
+  ServicesMontageVideoRoute: ServicesMontageVideoRoute,
+  ServicesPublicitesRoute: ServicesPublicitesRoute,
+  ServicesSitesWebRoute: ServicesSitesWebRoute,
+  ServicesUgcIaRoute: ServicesUgcIaRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
