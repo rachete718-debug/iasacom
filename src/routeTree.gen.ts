@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as CollaborationRouteImport } from './routes/collaboration'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as ProcessusRouteImport } from './routes/processus'
 import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
@@ -39,6 +40,11 @@ const CollaborationRoute = CollaborationRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessusRoute = ProcessusRouteImport.update({
+  id: '/processus',
+  path: '/processus',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TarifsRoute = TarifsRouteImport.update({
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
   '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
   '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
   '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
   '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/collaboration': typeof CollaborationRoute
   '/portfolio': typeof PortfolioRoute
+  '/processus': typeof ProcessusRoute
   '/tarifs': typeof TarifsRoute
   '/vision': typeof VisionRoute
   '/services/montage-video': typeof ServicesMontageVideoRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/collaboration'
     | '/portfolio'
+    | '/processus'
     | '/tarifs'
     | '/vision'
     | '/services/montage-video'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/collaboration'
     | '/portfolio'
+    | '/processus'
     | '/tarifs'
     | '/vision'
     | '/services/montage-video'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/collaboration'
     | '/portfolio'
+    | '/processus'
     | '/tarifs'
     | '/vision'
     | '/services/montage-video'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   CollaborationRoute: typeof CollaborationRoute
   PortfolioRoute: typeof PortfolioRoute
+  ProcessusRoute: typeof ProcessusRoute
   TarifsRoute: typeof TarifsRoute
   VisionRoute: typeof VisionRoute
   ServicesMontageVideoRoute: typeof ServicesMontageVideoRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processus': {
+      id: '/processus'
+      path: '/processus'
+      fullPath: '/processus'
+      preLoaderRoute: typeof ProcessusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tarifs': {
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   CollaborationRoute: CollaborationRoute,
   PortfolioRoute: PortfolioRoute,
+  ProcessusRoute: ProcessusRoute,
   TarifsRoute: TarifsRoute,
   VisionRoute: VisionRoute,
   ServicesMontageVideoRoute: ServicesMontageVideoRoute,
